@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body{
+			height: 10000px;
+		}
+		#txt{
+			position: fixed;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id=txt> Start Scrolling </div>
+
+
+	<script>
+// when user scrolls, go to getCoordinates
+		window.addEventListener("scroll", getCoordinates);
+
+// get coordinates
+		var yArray = [0,0]; 				//blank array to add y axis values
+		function getCoordinates(){
+		    var y = window.pageYOffset; 	//get y axis values
+
+			yArray.splice(0,0,y); 			// adds coordinates to Array
+			yArray.splice(2,1);   			// removes old coordinates
+
+		    upOrDown(yArray)				//the checking function
+		}
+
+// see if user scrolls up or down
+		function upOrDown(yArray){
+			var currentY = yArray[0];
+			var previousY = yArray[1];
+
+			if (currentY > previousY){
+				console.log("down")			//user is scrolling down
+				scrollDown(); 				//scroll down function
+
+			} else if (currentY < previousY){
+				console.log("up")			//user is scrolling up
+				scrollUp(); 				//scroll up function
+			}
+		}
+
+
+// action(s) when user scrolls down
+		function scrollDown(){				//can add more stuff here
+			document.getElementById("txt").innerHTML = "you're scrolling down"
+		}
+
+
+
+
+// action(s) when user scrolls up
+		function scrollUp(){				//can add more stuff here
+			document.getElementById("txt").innerHTML = "you're scrolling up"
+		}
+
+	</script>
+
+</body>
+</html>
+
+
+
+
